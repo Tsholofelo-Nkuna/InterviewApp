@@ -49,7 +49,7 @@ namespace InterviewApp.Services
             }
         }
 
-        protected string GetTimeOfDay(TimeOnly currentTime)
+        public string GetTimeOfDay(TimeOnly currentTime)
         {
             if(currentTime.IsBetween(TimeOnly.FromDateTime(new DateTime(2025,1,1,6,0,0)), TimeOnly.FromDateTime(new DateTime(2025, 1, 1, 12, 0, 0))))
             {

@@ -8,5 +8,6 @@ namespace InterviewApp.Services
 {
     public interface ITimeGreetingService : IGreetingService
     {
+        string GetTimeOfDay(TimeOnly currentTime);
     }
 }
