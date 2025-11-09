@@ -6,6 +6,7 @@ using InterviewApp.Services;
 using InterviewApp.Models;
 using MediatR;
 using InterviewApp.Queries;
+using System;
 
 class Program
 {
@@ -19,19 +20,22 @@ class Program
             .ConfigureServices((builder, services) => {
 
                 services.AddLogging();
-                services.Configure<LanugageSetting>(options => {
+                services.Configure<LanguageSetting>(options => {
                     builder.Configuration.GetSection("LangSettings").Bind(options);
                 });
                 services.AddTransient<ITimeGreetingService, TimeGreetingService>();
                 services.AddTransient<IGreetingService, GreetingService>();
-                services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
+                services.AddMediatR(typeof(Program).Assembly);
             
             })
             .Build();
 
         var mediator = host.Services.GetRequiredService<IMediator>();
-        await mediator.Send(new GreetUserQuery());
-
+        var greetinging = await mediator.Send(new GreetUserQuery());
+        Console.WriteLine(greetinging);
+        Console.WriteLine(".................................................");
+        var timeGreeting = await mediator.Send(new GetTimeGreetingQuery());
+        Console.WriteLine(timeGreeting);
         await host.RunAsync();
     }
 }

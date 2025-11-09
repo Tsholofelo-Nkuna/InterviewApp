@@ -6,5 +6,7 @@ public interface IGreetingService
 {
     string Run();
     IEnumerable<string> GetSupportedLanguages();
-    
+    public bool LanguageIsSupported(string language);
+
+
 }

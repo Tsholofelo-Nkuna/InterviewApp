@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterviewApp.Models
 {
-    public class LanugageSetting
+    public class LanguageSetting
     {
         public string Language { get; set; }
         public string DefaultLanguage { get; set; }

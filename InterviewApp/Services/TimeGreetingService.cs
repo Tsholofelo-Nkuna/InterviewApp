@@ -14,9 +14,9 @@ namespace InterviewApp.Services
 {
     public class TimeGreetingService : GreetingService, ITimeGreetingService
     {
-        private readonly LanugageSetting _options;
+        private readonly LanguageSetting _options;
         private readonly ILogger<GreetingService> _logger;
-        public TimeGreetingService(IOptions<LanugageSetting> options, ILogger<GreetingService> logger) : base(options, logger, null)
+        public TimeGreetingService(IOptions<LanguageSetting> options, ILogger<GreetingService> logger) : base(options, logger, null)
         {
             _logger = logger;
             _options = options.Value;

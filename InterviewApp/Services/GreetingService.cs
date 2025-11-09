@@ -14,9 +14,9 @@ using InterviewApp.Constants;
 
 namespace InterviewApp.Services
 {
-    public class GreetingService(IOptions<LanugageSetting> options, ILogger<GreetingService> logger, ITimeGreetingService timeGreetingService) : IGreetingService
+    public class GreetingService(IOptions<LanguageSetting> options, ILogger<GreetingService> logger, ITimeGreetingService timeGreetingService) : IGreetingService
     {
-        private readonly LanugageSetting _options = options.Value;
+        private readonly LanguageSetting _options = options.Value;
         private readonly ILogger<GreetingService> _logger = logger;
         protected string languageResourcePrefix = "InterviewApp.Languages";
         
@@ -73,7 +73,7 @@ namespace InterviewApp.Services
                
         }
 
-        protected bool LanguageIsSupported(string language)
+        public bool LanguageIsSupported(string language)
         {
             if(language is not null)
             {
