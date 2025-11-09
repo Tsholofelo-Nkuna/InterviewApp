@@ -32,10 +32,11 @@ class Program
 
         var mediator = host.Services.GetRequiredService<IMediator>();
         var greetinging = await mediator.Send(new GreetUserQuery());
-        Console.WriteLine(greetinging);
-        Console.WriteLine(".................................................");
+        Console.WriteLine($"{nameof(GreetUserQuery)} results:\n{greetinging}\n");
+        Console.WriteLine(".................................................\n");
+        Console.WriteLine($"{nameof(GetTimeGreetingQuery)} results:");
         var timeGreeting = await mediator.Send(new GetTimeGreetingQuery());
-        Console.WriteLine(timeGreeting);
+        
         await host.RunAsync();
     }
 }
